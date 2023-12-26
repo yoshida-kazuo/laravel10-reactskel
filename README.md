@@ -2,7 +2,6 @@
 
 php^8.3 node18.17.1  
 
-TypeScript  
 * 権限周り: 一般ユーザ, 管理者, スーパーユーザ
   * Kernel: web: 権限に基づくroot template切り替え
     * src\app\Http\Middleware\InteriaRole.php
