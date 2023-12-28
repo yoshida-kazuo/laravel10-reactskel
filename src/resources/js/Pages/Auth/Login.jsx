@@ -5,8 +5,6 @@ import InputError from '@/Components/InputError';
 import InputLabel from '@/Components/InputLabel';
 import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
-import TimezoneSelector from '@/Components/TimezoneSelector';
-import LangSelector from '@/Components/LangSelector';
 import { Head, Link, useForm } from '@inertiajs/react';
 import { useTranslation } from 'react-i18next';
 import i18n from '@/i18n';
@@ -14,6 +12,7 @@ import i18n from '@/i18n';
 export default function Login({
     status,
     canResetPassword,
+    googleAuth,
     lang,
     timezone
 }) {
@@ -80,22 +79,6 @@ export default function Login({
                 </div>
 
                 <div className="block mt-4">
-                    <LangSelector
-                        id="lang"
-                        defaultLang={lang}
-                        className='form-select border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full'
-                    />
-                </div>
-
-                <div className="block mt-4">
-                    <TimezoneSelector
-                        id="timezone"
-                        defaultTimezone={timezone}
-                        className='form-select border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full'
-                    />
-                </div>
-
-                <div className="block mt-4">
                     <label className="flex items-center">
                         <Checkbox
                             name="remember"
@@ -121,6 +104,14 @@ export default function Login({
                     </PrimaryButton>
                 </div>
             </form>
+
+            {googleAuth && (
+                <a
+                    href={route('auth.google')}
+                >
+                    <img src="https://developers.google.com/identity/images/btn_google_signin_dark_normal_web.png" />
+                </a>
+            )}
         </AuthLayout>
     );
 }
